@@ -1,37 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "../db/sequelize.js";
 
-export const User = sequelize.define(
-    'User',
-    {
-        firstName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: {
-                args: true,
-                msg: "Email address already exists."
-            }
-        },
-
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-    }
-
-);
-
-
 export const Event = sequelize.define(
     'Event',
     {
@@ -48,10 +17,6 @@ export const Event = sequelize.define(
         address: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: {
-                args: true,
-                msg: "Email address already exists."
-            }
         },
 
         date: {
@@ -78,7 +43,17 @@ export const Event = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+
+        // Sequelize does this automatically, but manually adding it for future reference...
+        userID: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Users',
+                key: 'id'
+            },
+            onDelete: 'CASCADE',
+        }
     }
 
 );
-

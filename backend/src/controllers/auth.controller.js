@@ -1,4 +1,6 @@
 import { User } from "../models/user.model.js";
+import "../models/user.model.js"; 
+
 
 
 
