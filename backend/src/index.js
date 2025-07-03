@@ -2,8 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import sequelize from "./db/sequelize.js";
 import authRoutes from "./routes/auth.route.js";
+import eventRoutes from "./routes/event.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import "./lib/associations.js";
+
 const app = express();
 app.use(
   cors({
@@ -18,8 +21,9 @@ app.use(cookieParser());
 
 const PORT = process.env.API_PORT;
 
-
 app.use("/api/auth", authRoutes);
+app.use("/api/events", eventRoutes);
+
 app.listen(PORT, async () => {
   console.log(`Listening on port ${PORT}`);
 

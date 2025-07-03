@@ -32,12 +32,14 @@ import {User} from "../models/models.js";
 
 export const protectRoute = async (req, res, next) => {
   try {
+    // Looks for JWT token in cookies...
     const token = req.cookies.jwt;
     if (!token) {
       console.log("No JWT token found in cookies");
       return res.status(401).json({ message: "Unauthorized - No Token Provided" });
     }
 
+    // Verify if the token is valid...
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (!decoded || !decoded.userID) {
       console.log("Invalid token or missing userID in payload");
