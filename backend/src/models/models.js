@@ -82,3 +82,37 @@ export const Event = sequelize.define(
 
 );
 
+export const Item = sequelize.define(
+    'Item',
+    {
+        label: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    }
+)
+
+export const Category = sequelize.define(
+    'Category',
+    {
+        label: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    }
+)
+
+export const Post = sequelize.define(
+    'Post',
+    {
+        text: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
+        date: {
+            type: DataTypes.DATE,
+        }
+
+    }
+)
