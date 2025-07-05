@@ -1,4 +1,3 @@
-import { request } from "express";
 import { Event } from "../models/models.js";
 
 export const createEvent = async (request, response) => {
@@ -37,7 +36,7 @@ export const getEvents = async (request, response) => {
         };
         console.log(request)
         const events = await Event.findAll({where: {userID: userID}});
-        return response.status(201).json(events);
+        return response.status(200).json(events);
     } catch (error) {
         console.error("Error getting event:", error.message);
         return response.status(500).json({ message: "Internal server error" });

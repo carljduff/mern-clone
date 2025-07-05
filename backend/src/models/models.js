@@ -84,6 +84,10 @@ export const Category = sequelize.define("Category", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  type: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 export const Item = sequelize.define("Item", {
