@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Homepage from "./components/Homepage";
-import Login from "./components/Login.jsx";
-import Signup from "./components/Signup.jsx";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
