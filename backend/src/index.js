@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import sequelize from "./db/sequelize.js";
 import authRoutes from "./routes/auth.route.js";
 import eventRoutes from "./routes/event.route.js";
+import itemRoutes from "./routes/item.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import "./lib/associations.js";
@@ -23,6 +24,7 @@ const PORT = process.env.API_PORT;
 
 app.use("/api/auth", authRoutes);
 app.use("/api/events", eventRoutes);
+app.use("/api/events/:eventID/items", itemRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Listening on port ${PORT}`);

@@ -53,7 +53,7 @@ export const getSingleEvent = async (request, response) => {
     if (!userID) {
       return response.status(401).json({ message: "Unauthorized - No user ID found." });
     }
-    
+
     // includes event details with items for the event and user...
     const event = await Event.findOne({
          where: { id: eventID, userID },
@@ -64,7 +64,7 @@ export const getSingleEvent = async (request, response) => {
             },
             {
                 model: User,
-                attributes: {exlucde: ["password"]}
+                attributes: {exclude: ["password"]}
             }
          ]
         });
@@ -77,5 +77,51 @@ export const getSingleEvent = async (request, response) => {
   } catch (error) {
     console.error("Error fetching single event:", error.message);
     return response.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const deleteEvent = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const event = await Event.findByPk(id);
+
+    if (!event) {
+      return res.status(404).json({ message: "Event not found" });
+    }
+
+    
+    if (event.userID !== req.user.id) return res.status(403).json({ message: "Forbidden" });
+
+    await event.destroy();
+    return res.status(200).json({ message: "Event deleted successfully" });
+
+  } catch (error) {
+    console.error("Delete error:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const updateEvent = async (req, res) => {
+  const { id } = req.params;
+  const updatedData = req.body;
+
+  try {
+    const event = await Event.findByPk(id);
+
+    if (!event) {
+      return res.status(404).json({ message: "Event not found" });
+    }
+
+    
+    if (event.userID !== req.user.id) return res.status(403).json({ message: "Forbidden" });
+
+    await event.update(updatedData);
+
+    return res.status(200).json(event);
+
+  } catch (error) {
+    console.error("Updating Event Error:", error);
+    return res.status(500).json({ message: "Server error" });
   }
 };
