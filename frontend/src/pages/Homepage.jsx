@@ -1,8 +1,9 @@
 import React from 'react'
+import { AddEvent } from '../components/AddEvent.jsx'
 
 const Homepage = () => {
   return (
-    <div>Homepage</div>
+    <div><AddEvent/></div>
   )
 }
 
