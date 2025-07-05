@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
+import Events from "./components/Event.jsx";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
@@ -40,6 +41,7 @@ function App() {
           path="/login"
           element={!authUser ? <Login /> : <Navigate to="/" />}
         />
+        <Route path="/events" element={!authUser ? <Login/> : <Events/>}/>
       </Routes>
     </div>
   );
