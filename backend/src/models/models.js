@@ -67,14 +67,14 @@ export const Event = sequelize.define("Event", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  userID: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: "Users",
-      key: "id",
-    },
-  },
+//   userID: {
+//     type: DataTypes.INTEGER,
+//     allowNull: false,
+//     references: {
+//       model: "Users",
+//       key: "id",
+//     },
+//   },
 });
 
 
@@ -91,6 +91,15 @@ export const Item = sequelize.define("Item", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  isNeeded: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
+  
   
 });
 export const Post = sequelize.define("Post", {
