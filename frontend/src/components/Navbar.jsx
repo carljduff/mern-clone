@@ -4,7 +4,7 @@ import { useAuthStore } from '../store/useAuthStore';
 
 const Navbar = () => {
 
-  const { authUser } = useAuthStore();
+  const { authUser, logout } = useAuthStore();
 
   return (
     <div className="navbar bg-base-100">
@@ -19,7 +19,7 @@ const Navbar = () => {
           <summary>Settings</summary>
           <ul className="bg-base-100 rounded-t-none p-2">
             <li><Link to='/settings'>Change Theme</Link></li>
-            <li><a>...</a></li>
+            <li><button onClick={logout}>Logout</button></li>
           </ul>
         </details>
       </li>

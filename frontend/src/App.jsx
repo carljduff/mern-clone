@@ -42,6 +42,7 @@ function App() {
           element={!authUser ? <Login /> : <Navigate to="/" />}
         />
         <Route path="/events" element={!authUser ? <Login/> : <Events/>}/>
+        
       </Routes>
     </div>
   );
