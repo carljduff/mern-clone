@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Events from "./components/Event.jsx";
+import {AddEvent} from "./components/AddEvent.jsx"
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
@@ -42,7 +43,7 @@ function App() {
           element={!authUser ? <Login /> : <Navigate to="/" />}
         />
         <Route path="/events" element={!authUser ? <Login/> : <Events/>}/>
-        
+        <Route path="/events/:eventID/edit" element={!authUser ? <Login/> : <AddEvent/>} />
       </Routes>
     </div>
   );
